@@ -17,6 +17,9 @@ exporters:
     endpoint: "jaeger:4317"
     tls:
       insecure: true
+  otlphttp/aware:
+    endpoint: "http://host.docker.internal:4300"
+    headers: {"x-project-id": "e513f9b5-56ee-429b-9b62-6e463b6c5272"}
   logging:
   prometheus:
     endpoint: "otelcol:9464"
@@ -46,7 +49,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlp, logging, spanmetrics]
+      exporters: [otlp, logging, spanmetrics,otlphttp/aware]
     metrics:
       receivers: [otlp, spanmetrics]
       processors: [filter, transform, batch]

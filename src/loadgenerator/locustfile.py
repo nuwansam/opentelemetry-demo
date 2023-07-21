@@ -54,9 +54,13 @@ products = [
 people_file = open('people.json')
 people = json.load(people_file)
 
+IS_LOAD_TEST=False;
 
 class WebsiteUser(HttpUser):
-    wait_time = between(1, 10)
+    if(IS_LOAD_TEST):
+        wait_time = between(1,10)
+    else:
+        wait_time = between(0.2,5)
 
     @task(1)
     def index(self):
@@ -68,6 +72,8 @@ class WebsiteUser(HttpUser):
 
     @task(3)
     def get_recommendations(self):
+        if(IS_LOAD_TEST):
+            return;
         params = {
             "productIds": [random.choice(products)],
         }

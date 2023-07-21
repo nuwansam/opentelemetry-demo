@@ -48,6 +48,11 @@ services:
   # AdService
   adservice:
     image: ${IMAGE_NAME}:${IMAGE_VERSION}-adservice
+    # COMMENT THE ABOVE LINE. CREATE A NEW DOCKER IMAGE FOR ADSERVICE PER ENV, AND COPY THE IMAGE ID AS BELOW
+    # prod
+    #image: 076c74047852d14452b07184603fd4a04f44f7c0b8e221cfabdd3d80eefc84cc
+    # qa
+    #image: 6a7f28a047292968247eb4c8648f15aeeec3cc121c96a49ef0de72b1fd26907f
     container_name: ad-service
     build:
       context: ./
@@ -340,6 +345,10 @@ services:
   # Load Generator
   loadgenerator:
     image: ${IMAGE_NAME}:${IMAGE_VERSION}-loadgenerator
+    # load
+    #image: 3e8af6cacd954bbf90c0cc501383fbbea09214a3ccb7a01ffc4a70aa261f4d88
+    # prod
+    #image: fb6a0397666ab520bc2be2501dd2b0d9dc4c276fa0dae9bed406e7bfd070633d
     container_name: load-generator
     build:
       context: ./

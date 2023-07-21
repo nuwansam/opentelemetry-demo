@@ -172,6 +172,17 @@ public final class AdService {
         span.setAttribute("app.ads.ad_request_type", adRequestType.name());
         span.setAttribute("app.ads.ad_response_type", adResponseType.name());
 
+        List<String> countriesInProd=new ArrayList<>();
+        countriesInProd.add("US");
+        countriesInProd.add("IN");
+        countriesInProd.add("SG");
+
+        List<String> countriesInQa=new ArrayList<>();
+        countriesInQa.add("US");
+
+
+        span.setAttribute("country_code", getRandomItem(countriesInQa));
+
         adRequestsCounter.add(
             1,
             Attributes.of(
@@ -205,10 +216,21 @@ public final class AdService {
               oteldemo.Demo.GetFlagRequest.newBuilder()
                   .setName(ADSERVICE_FAIL_FEATURE_FLAG)
                   .build());
-      return response.getFlag().getEnabled();
+      Span span = Span.current();
+      if(response.getFlag().getEnabled()){
+            span.addEvent(
+            "feature_flag", Attributes.of(AttributeKey.stringKey("feature_flag.key"), "adServiceFailure",AttributeKey.stringKey("feature_flag.variant"), "true"));
+            return true;
+        }
+      return false;
     }
   }
 
+  private static String getRandomItem(List<String> list){
+    Random rand = new Random();
+    return list.get(rand.nextInt(list.size()));
+  }
+  
   private static final ImmutableListMultimap<String, Ad> adsMap = createAdsMap();
 
   @WithSpan("getAdsByCategory")
