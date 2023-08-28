@@ -47,12 +47,12 @@ services:
 
   # AdService
   adservice:
-    image: ${IMAGE_NAME}:${IMAGE_VERSION}-adservice
+    #image: ${IMAGE_NAME}:${IMAGE_VERSION}-adservice
     # COMMENT THE ABOVE LINE. CREATE A NEW DOCKER IMAGE FOR ADSERVICE PER ENV, AND COPY THE IMAGE ID AS BELOW
     # prod
-    #image: 076c74047852d14452b07184603fd4a04f44f7c0b8e221cfabdd3d80eefc84cc
+    image: f2aaa5092df816d9c71daf6eabf79923df9b57d623da37211fa3f5e4825773fc
     # qa
-    #image: 6a7f28a047292968247eb4c8648f15aeeec3cc121c96a49ef0de72b1fd26907f
+    #image: 1cc7d9c0187e6d44892e4d48c3ea96af0672a5c757176825b1dea07f43a9c76a
     container_name: ad-service
     build:
       context: ./

@@ -181,7 +181,7 @@ public final class AdService {
         countriesInQa.add("US");
 
 
-        span.setAttribute("country_code", getRandomItem(countriesInQa));
+        span.setAttribute("country_code", getRandomItem(countriesInProd));
 
         adRequestsCounter.add(
             1,

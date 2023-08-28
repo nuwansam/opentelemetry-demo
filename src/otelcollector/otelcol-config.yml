@@ -18,8 +18,8 @@ exporters:
     tls:
       insecure: true
   otlphttp/aware:
-    endpoint: "http://host.docker.internal:4300"
-    headers: {"x-project-id": "e513f9b5-56ee-429b-9b62-6e463b6c5272"}
+    endpoint: "https://ingress.awarelabs.io"
+    headers: {"x-aware-project-id": "8a06de4f-e8d0-4544-82d6-f3dca1f1dc7f"}
   logging:
   prometheus:
     endpoint: "otelcol:9464"
