@@ -535,6 +535,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    volumes:
+      - /mnt/pg_data:/var/lib/postgresql/data
     logging: *logging
 
   # Kafka used by Checkout, Accounting, and Fraud Detection services
