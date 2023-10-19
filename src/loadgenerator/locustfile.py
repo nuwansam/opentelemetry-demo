@@ -54,7 +54,7 @@ products = [
 people_file = open('people.json')
 people = json.load(people_file)
 
-IS_LOAD_TEST=False;
+IS_LOAD_TEST=True;
 
 class WebsiteUser(HttpUser):
     if(IS_LOAD_TEST):

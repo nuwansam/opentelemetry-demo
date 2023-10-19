@@ -13,48 +13,25 @@ receivers:
             - "https://*"
 
 exporters:
-  otlp:
-    endpoint: "jaeger:4317"
-    tls:
-      insecure: true
   otlphttp/aware:
     endpoint: "https://ingress.awarelabs.io"
-    headers: {"x-aware-project-id": "8a06de4f-e8d0-4544-82d6-f3dca1f1dc7f"}
+    #
+#    headers: {"x-aware-project-id": "ad9b535f-be89-4a81-b6f0-40db25f90b03"}
+    headers: {"x-aware-project-id": "344d23af-c8cc-4664-b8cc-4926e29d5f14"}
   logging:
-  prometheus:
-    endpoint: "otelcol:9464"
-    resource_to_telemetry_conversion:
-      enabled: true
-    enable_open_metrics: true
+
 
 processors:
   batch:
-  transform:
-    metric_statements:
-      - context: metric
-        statements:
-          - set(description, "Measures the duration of inbound HTTP requests") where name == "http.server.duration"
-  filter:
-    metrics:
-      exclude:
-        match_type: strict
-        metric_names:
-          - queueSize
-
-connectors:
-  spanmetrics:
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlp, logging, spanmetrics,otlphttp/aware]
+      exporters: [otlphttp/aware]
     metrics:
-      receivers: [otlp, spanmetrics]
-      processors: [filter, transform, batch]
-      exporters: [prometheus, logging]
-    logs:
       receivers: [otlp]
       processors: [batch]
       exporters: [logging]
+
