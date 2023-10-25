@@ -265,7 +265,8 @@ services:
 
   # Frontend
   frontend:
-    image: ${IMAGE_NAME}:${IMAGE_VERSION}-frontend
+    #image: ${IMAGE_NAME}:${IMAGE_VERSION}-frontend
+    image: 87279f2040f24f7b0a3c4540f56952e83ee127d2e64adf37f19b8332b4800709
     container_name: frontend
     build:
       context: ./

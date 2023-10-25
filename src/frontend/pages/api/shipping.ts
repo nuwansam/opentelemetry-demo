@@ -6,6 +6,8 @@ import InstrumentationMiddleware from '../../utils/telemetry/InstrumentationMidd
 import ShippingGateway from '../../gateways/rpc/Shipping.gateway';
 import { Address, CartItem, Empty, Money } from '../../protos/demo';
 import CurrencyGateway from '../../gateways/rpc/Currency.gateway';
+import TrackedTestsMiddleware from '../../utils/telemetry/TrackedTestsMiddleware';
+//import TrackedTestsMiddleware from 'tracked-tests-nextjs';
 
 type TResponse = Money | Empty;
 
@@ -26,4 +28,4 @@ const handler = async ({ method, query }: NextApiRequest, res: NextApiResponse<T
   }
 };
 
-export default InstrumentationMiddleware(handler);
+export default InstrumentationMiddleware(TrackedTestsMiddleware(handler));

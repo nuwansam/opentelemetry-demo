@@ -1,8 +1,13 @@
 {
   "devDependencies": {
+    "@kt3k/license-checker": "^3.2.2",
     "markdown-link-check": "^3.9.3",
     "markdown-toc": "^1.2.0",
-    "markdownlint-cli": "0.31.0",
-    "@kt3k/license-checker": "^3.2.2"
+    "markdownlint-cli": "0.31.0"
+  },
+  "dependencies": {
+    "sharp": "^0.32.6",
+    "tracked-tests-nextjs": "^0.0.37",
+    "tracked-tests-nodejs": "^0.0.2"
   }
 }

@@ -40,7 +40,8 @@ const nextConfig = {
       config.resolve.fallback.net = false;
       config.resolve.fallback.dns = false;
       config.resolve.fallback.fs = false;
-    }
+      config.resolve.extensions.push('.ts', '.tsx');
+   }
 
     return config;
   },

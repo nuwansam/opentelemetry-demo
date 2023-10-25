@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "npm run grpc:generate && NODE_OPTIONS='-r ./utils/telemetry/Instrumentation.js' next dev",
     "build": "next build",
-    "start": "node --require ./Instrumentation.js server.js tracked-tests-nodejs",
+    "start": "node --require ./Instrumentation.js server.js",
     "lint": "next lint",
     "cy:open": "cypress open",
     "grpc:generate": "mkdir -p ./protos && protoc -I ./pb  --plugin=./node_modules/.bin/protoc-gen-ts_proto --ts_proto_opt=esModuleInterop=true --ts_proto_out=./protos --ts_proto_opt=outputServices=grpc-js demo.proto"
@@ -41,9 +41,10 @@
     "react-query": "3.39.1",
     "sharp": "0.30.7",
     "styled-components": "5.3.5",
-    "tracked-tests-nodejs": "^0.0.1",
+    "tracked-tests-cypress": "^0.0.3",
+    "tracked-tests-nodejs": "^0.0.2",
     "ts-proto": "1.118.0",
-    "uuid": "8.3.2"
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/node": "18.0.6",
@@ -53,7 +54,7 @@
     "@types/uuid": "8.3.4",
     "@typescript-eslint/eslint-plugin": "5.30.7",
     "@typescript-eslint/parser": "5.30.7",
-    "cypress": "10.4.0",
+    "cypress": "^10.4.0",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
     "eslint-plugin-react": "7.30.1",

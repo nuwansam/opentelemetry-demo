@@ -15,11 +15,11 @@ receivers:
 exporters:
   otlphttp/aware:
     endpoint: "https://ingress.awarelabs.io"
-    #
-#    headers: {"x-aware-project-id": "ad9b535f-be89-4a81-b6f0-40db25f90b03"}
     headers: {"x-aware-project-id": "344d23af-c8cc-4664-b8cc-4926e29d5f14"}
+  otlphttp/awarestaging:
+    endpoint: "https://ingress-staging.awarelabs.io"
+    headers: {"x-aware-project-id": "dde35739-bdba-4120-b47d-a6ae3712bed5"}
   logging:
-
 
 processors:
   batch:
@@ -29,7 +29,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [otlphttp/aware]
+      exporters: [otlphttp/aware,otlphttp/awarestaging]
     metrics:
       receivers: [otlp]
       processors: [batch]

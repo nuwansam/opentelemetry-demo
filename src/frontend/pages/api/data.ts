@@ -3,6 +3,8 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 import InstrumentationMiddleware from '../../utils/telemetry/InstrumentationMiddleware';
+import TrackedTestsMiddleware from '../../utils/telemetry/TrackedTestsMiddleware';
+//import TrackedTestsMiddleware from 'tracked-tests-nextjs';
 import AdGateway from '../../gateways/rpc/Ad.gateway';
 import { Ad, Empty } from '../../protos/demo';
 
@@ -23,4 +25,4 @@ const handler = async ({ method, query }: NextApiRequest, res: NextApiResponse<T
   }
 };
 
-export default InstrumentationMiddleware(handler);
+export default InstrumentationMiddleware(TrackedTestsMiddleware(handler));

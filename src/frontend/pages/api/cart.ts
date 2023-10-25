@@ -7,6 +7,8 @@ import { AddItemRequest, Empty } from '../../protos/demo';
 import ProductCatalogService from '../../services/ProductCatalog.service';
 import { IProductCart, IProductCartItem } from '../../types/Cart';
 import InstrumentationMiddleware from '../../utils/telemetry/InstrumentationMiddleware';
+import TrackedTestsMiddleware from '../../utils/telemetry/TrackedTestsMiddleware';
+//import TrackedTestsMiddleware from 'tracked-tests-nextjs';
 
 type TResponse = IProductCart | Empty;
 
@@ -53,4 +55,4 @@ const handler: NextApiHandler<TResponse> = async ({ method, body, query }, res) 
   }
 };
 
-export default InstrumentationMiddleware(handler);
+export default TrackedTestsMiddleware(InstrumentationMiddleware(handler));

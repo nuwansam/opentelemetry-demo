@@ -3,6 +3,8 @@
 
 import type { NextApiRequest, NextApiResponse } from 'next';
 import InstrumentationMiddleware from '../../utils/telemetry/InstrumentationMiddleware';
+import TrackedTestsMiddleware from '../../utils/telemetry/TrackedTestsMiddleware';
+//import TrackedTestsMiddleware from 'tracked-tests-nextjs';
 import CheckoutGateway from '../../gateways/rpc/Checkout.gateway';
 import { Empty, PlaceOrderRequest } from '../../protos/demo';
 import { IProductCheckoutItem, IProductCheckout } from '../../types/Cart';
@@ -41,4 +43,4 @@ const handler = async ({ method, body, query }: NextApiRequest, res: NextApiResp
   }
 };
 
-export default InstrumentationMiddleware(handler);
+export default InstrumentationMiddleware(TrackedTestsMiddleware(handler));

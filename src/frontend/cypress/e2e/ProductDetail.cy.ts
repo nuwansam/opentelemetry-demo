@@ -3,7 +3,7 @@
 
 import { CypressFields, getElementByField } from '../../utils/Cypress';
 
-describe.skip('Product Detail Page', () => {
+describe('Product Detail Page', () => {
   beforeEach(() => {
     cy.visit('/');
   });
