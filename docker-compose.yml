@@ -52,7 +52,7 @@ services:
     # prod
     #image: f2aaa5092df816d9c71daf6eabf79923df9b57d623da37211fa3f5e4825773fc
     # qa
-    image: 1cc7d9c0187e6d44892e4d48c3ea96af0672a5c757176825b1dea07f43a9c76a
+    image: 179b124ea38c5ea471bc7049f211d1795f0b7e9080c8e8b4bae59ae75b420b84
     container_name: ad-service
     build:
       context: ./
@@ -266,7 +266,7 @@ services:
   # Frontend
   frontend:
     #image: ${IMAGE_NAME}:${IMAGE_VERSION}-frontend
-    image: 87279f2040f24f7b0a3c4540f56952e83ee127d2e64adf37f19b8332b4800709
+    image: 2d4ff5e5877ba5b8414dba722d740b2647d78b8e058588d279791c96560bc5ff
     container_name: frontend
     build:
       context: ./
@@ -347,7 +347,7 @@ services:
   loadgenerator:
     image: ${IMAGE_NAME}:${IMAGE_VERSION}-loadgenerator
     # load
-    image: 2326803e2fac4021b3c7d4fe1298008a63189c9636730b9c98c3e3e35470def6
+    image: 97a6f351618aba89b9786ce11cc48aa0f30ef250b78565a1d20acc5839026437
     # prod
     #image: fb6a0397666ab520bc2be2501dd2b0d9dc4c276fa0dae9bed406e7bfd070633d
     container_name: load-generator
